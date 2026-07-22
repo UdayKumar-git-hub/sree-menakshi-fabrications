@@ -1,13 +1,38 @@
 // src/components/ContactForm.jsx
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useEnquiry } from '../hooks/useEnquiry'
-import { PRODUCTS } from '../lib/data'
+import { PRODUCTS, PACKAGES } from '../lib/data'
 
-export default function ContactForm({ defaultProduct = '' }) {
+export default function ContactForm({ defaultProduct = '', defaultPackage = '' }) {
   const { submitEnquiry, loading, success, error } = useEnquiry()
-  const [form, setForm] = useState({ name: '', phone: '', email: '', product: defaultProduct, message: '' })
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    product: defaultProduct || defaultPackage,
+    message: defaultPackage ? `Enquiry for package: ${defaultPackage}` : '',
+  })
+
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef(null)
 
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
+
+  const selectProduct = (name) => {
+    setForm(f => ({ ...f, product: name }))
+    setDropdownOpen(false)
+  }
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const submit = async e => {
     e.preventDefault()
@@ -24,6 +49,12 @@ export default function ContactForm({ defaultProduct = '' }) {
 
   return (
     <form className="contact-form" onSubmit={submit} noValidate>
+      {defaultPackage && (
+        <div className="form-package-banner">
+          <svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <span>Enquiring about: <strong>{defaultPackage}</strong></span>
+        </div>
+      )}
       <div className="form-group">
         <label className="form-label" htmlFor="name">Full Name *</label>
         <input id="name" name="name" className="form-input" placeholder="Your name" required value={form.name} onChange={handle} />
@@ -36,12 +67,49 @@ export default function ContactForm({ defaultProduct = '' }) {
         <label className="form-label" htmlFor="email">Email Address</label>
         <input id="email" name="email" type="email" className="form-input" placeholder="you@company.com" value={form.email} onChange={handle} />
       </div>
-      <div className="form-group">
-        <label className="form-label" htmlFor="product">Product Interest</label>
-        <select id="product" name="product" className="form-input form-select" value={form.product} onChange={handle}>
-          <option value="">Select a product…</option>
-          {PRODUCTS.map(p => <option key={p.id} value={p.name}>{p.name}</option>)}
-        </select>
+      <div className="form-group" style={{ position: 'relative' }} ref={dropdownRef}>
+        <label className="form-label">Product / Package Interest</label>
+        <button
+          type="button"
+          className={`form-input form-select-trigger ${dropdownOpen ? 'active' : ''}`}
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+        >
+          <span>{form.product || 'Select a product or package…'}</span>
+          <svg className="select-chevron" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" /></svg>
+        </button>
+
+        {dropdownOpen && (
+          <div className="form-select-dropdown">
+            <div className="form-select-group">
+              <div className="form-select-group-title">Solution Packages</div>
+              {PACKAGES.map(p => (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`form-select-option ${form.product === p.name ? 'selected' : ''}`}
+                  onClick={() => selectProduct(p.name)}
+                >
+                  <span>{p.name}</span>
+                  {form.product === p.name && <span className="tick">✓</span>}
+                </button>
+              ))}
+            </div>
+            <div className="form-select-group">
+              <div className="form-select-group-title">Individual Products</div>
+              {PRODUCTS.map(p => (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`form-select-option ${form.product === p.name ? 'selected' : ''}`}
+                  onClick={() => selectProduct(p.name)}
+                >
+                  <span>{p.name}</span>
+                  {form.product === p.name && <span className="tick">✓</span>}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
       <div className="form-group">
         <label className="form-label" htmlFor="message">Message / Requirements</label>

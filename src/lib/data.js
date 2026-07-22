@@ -116,6 +116,15 @@ export const PROJECTS = [
   },
 ]
 
+export const PROJECT_VIDEOS = [
+  { id: 'pv-1', src: '/project-video-1.mp4', title: 'Rolling Shutter Installation',   category: 'Rolling Shutters' },
+  { id: 'pv-2', src: '/project-video-2.mp4', title: 'Motorized Shutter Operation',    category: 'Rolling Shutters' },
+  { id: 'pv-3', src: '/project-video-3.mp4', title: 'Shutter Mechanism Close-up',      category: 'Fabrication' },
+  { id: 'pv-4', src: '/project-video-4.mp4', title: 'Industrial Shutter Deployment',   category: 'Rolling Shutters' },
+  { id: 'pv-5', src: '/project-video-5.mp4', title: 'Commercial Shutter Project',      category: 'Rolling Shutters' },
+  { id: 'pv-6', src: '/project-video-6.mp4', title: 'On-Site Fabrication Work',        category: 'Fabrication' },
+]
+
 export const WHY_CHOOSE = [
   { title: 'Engineering Precision', desc: 'Every project is designed with micro-level accuracy using advanced CAD systems and precision measuring equipment.' },
   { title: 'Premium Materials', desc: 'We source exclusively from JSW, TATA, and SAIL — ensuring IS 2062 grade steel and SS 304/316 across all fabrications.' },
@@ -131,4 +140,235 @@ export const HOME_PRODUCTS = [
   { title: 'PEB Structures',    desc: 'Pre-engineered steel buildings with crane-compatible design, insulated panels, and rapid erection timelines.',   image: '/product-peb.png',         link: '/products?cat=peb_shed' },
   { title: 'Steel Fabrication', desc: 'Heavy structural fabrication including trusses, columns, beams, and complex assemblies for industrial projects.', image: '/product-fabrication.png', link: '/products?cat=fabrication' },
   { title: 'Industrial Sheds',  desc: 'Large-span industrial sheds with galvanised purlins, ridge ventilators, and corrugated metal roofing systems.',   image: '/product-shed.png',        link: '/products?cat=peb_shed' },
+]
+
+export const PACKAGE_CATEGORIES = [
+  { key: 'all',          label: 'All Packages' },
+  { key: 'residential',  label: 'Residential' },
+  { key: 'commercial',   label: 'Commercial' },
+  { key: 'industrial',   label: 'Industrial' },
+  { key: 'builder',      label: 'Builder & Developer' },
+  { key: 'agricultural', label: 'Agricultural' },
+  { key: 'addon',        label: 'Premium Add-Ons' },
+]
+
+export const PACKAGES = [
+  // ── RESIDENTIAL COLLECTION ───────────────────────────────────
+  {
+    id: 'pkg-01',
+    collection: 'residential',
+    name: 'Dream Home Steel Package',
+    badge: 'Best Seller',
+    icon: 'home',
+    perfectFor: 'Independent Homes & Villas',
+    inclusions: [
+      'Designer Main Gate',
+      'Balcony Railings',
+      'Staircase Railings',
+      'Window Safety Grills',
+      'Utility Gate',
+      'Car Parking Shed',
+      'Premium Powder Coating',
+      'Installation',
+    ],
+    outcome: 'Complete home steel work, one design language, increased property value, 10+ years durability.',
+  },
+  {
+    id: 'pkg-02',
+    collection: 'residential',
+    name: 'Signature Entrance Package',
+    badge: null,
+    icon: 'gate',
+    perfectFor: 'Premium Gates',
+    inclusions: [
+      'Designer Sliding Gate / Swing Gate',
+      'Automation Ready',
+      'Premium Hardware',
+      'Powder Coating',
+      'Installation',
+    ],
+    outcome: "Your home's first impression.",
+  },
+  {
+    id: 'pkg-03',
+    collection: 'residential',
+    name: 'Outdoor Living Package',
+    badge: null,
+    icon: 'outdoor',
+    perfectFor: 'Terraces, Gardens & Parking',
+    inclusions: [
+      'Pergola',
+      'Terrace Canopy',
+      'Car Parking Shed',
+      'Outdoor Railings',
+      'Utility Structure',
+    ],
+    outcome: 'Transform unused outdoor space into a functional and stylish area.',
+  },
+
+  // ── COMMERCIAL COLLECTION ────────────────────────────────────
+  {
+    id: 'pkg-04',
+    collection: 'commercial',
+    name: 'Business Security Package',
+    badge: 'Popular',
+    icon: 'shield',
+    perfectFor: 'Shops, Showrooms, Warehouses',
+    inclusions: [
+      'Automatic Rolling Shutter',
+      'Security Gate',
+      'Safety Grills',
+      'Emergency Exit Door',
+    ],
+    outcome: 'Protect your business while maintaining a professional appearance.',
+  },
+  {
+    id: 'pkg-05',
+    collection: 'commercial',
+    name: 'Retail Frontage Package',
+    badge: null,
+    icon: 'storefront',
+    perfectFor: 'Modern Retail Stores',
+    inclusions: [
+      'Polycarbonate Rolling Shutter',
+      'Glass-Compatible Entrance',
+      'Premium Steel Work',
+      'Branding Frame',
+    ],
+    outcome: 'Modern storefront that attracts customers while staying secure.',
+  },
+
+  // ── INDUSTRIAL COLLECTION ────────────────────────────────────
+  {
+    id: 'pkg-06',
+    collection: 'industrial',
+    name: 'Warehouse Ready Package',
+    badge: 'Popular',
+    icon: 'warehouse',
+    perfectFor: 'Warehouses, Distribution Centers, Storage Facilities',
+    inclusions: [
+      'PEB Structure',
+      'Roofing',
+      'Steel Columns',
+      'Structural Fabrication',
+      'Installation',
+    ],
+    outcome: 'Move your operations into a ready-to-use warehouse faster.',
+  },
+  {
+    id: 'pkg-07',
+    collection: 'industrial',
+    name: 'Factory Expansion Package',
+    badge: null,
+    icon: 'factory',
+    perfectFor: 'Manufacturing Units & Plants',
+    inclusions: [
+      'Industrial Shed',
+      'Mezzanine Floor',
+      'Loading Bay',
+      'Staircase',
+      'Structural Fabrication',
+    ],
+    outcome: 'Expand manufacturing capacity with minimal downtime.',
+  },
+  {
+    id: 'pkg-08',
+    collection: 'industrial',
+    name: 'Turnkey Industrial Infrastructure Package',
+    badge: 'Premium',
+    icon: 'turnkey',
+    perfectFor: 'Complete Industrial Projects',
+    inclusions: [
+      'Site Inspection',
+      'Structural Design',
+      'Engineering Drawings',
+      'Fabrication',
+      'Manufacturing',
+      'Transportation',
+      'Installation',
+      'Final Handover',
+    ],
+    outcome: 'One contractor. One timeline. One warranty.',
+  },
+
+  // ── BUILDER & DEVELOPER COLLECTION ───────────────────────────
+  {
+    id: 'pkg-09',
+    collection: 'builder',
+    name: 'Apartment Steel Solutions',
+    badge: null,
+    icon: 'building',
+    perfectFor: 'Builders, Apartment Developers, Gated Communities',
+    inclusions: [
+      'Entrance Gate',
+      'Balcony Railings',
+      'Stair Railings',
+      'Utility Gates',
+      'Terrace Railings',
+      'Common Area Steel Works',
+    ],
+    outcome: 'Uniform premium finish across the entire project.',
+  },
+  {
+    id: 'pkg-10',
+    collection: 'builder',
+    name: 'Construction Partner Package',
+    badge: 'Partnership',
+    icon: 'partner',
+    perfectFor: 'Annual Partnership for Builders',
+    inclusions: [
+      'Priority Manufacturing',
+      'Dedicated Project Manager',
+      'Site Visits',
+      'BOQ Assistance',
+      'Structural Consultation',
+      'Fabrication',
+      'Installation',
+    ],
+    outcome: 'Your long-term fabrication partner for every project.',
+  },
+
+  // ── AGRICULTURAL COLLECTION ──────────────────────────────────
+  {
+    id: 'pkg-11',
+    collection: 'agricultural',
+    name: 'Smart Farm Package',
+    badge: null,
+    icon: 'farm',
+    perfectFor: 'Farms & Agricultural Properties',
+    inclusions: [
+      'Dairy Shed',
+      'Equipment Shed',
+      'Storage Shed',
+      'Boundary Gate',
+    ],
+    outcome: 'Protect machinery, livestock, and harvest with durable steel structures.',
+  },
+]
+
+export const PACKAGE_ADDONS = [
+  {
+    id: 'addon-01',
+    name: 'Automation Upgrade',
+    icon: 'automation',
+    items: ['Remote Control', 'Motorized Gates', 'Smart Sensors', 'Mobile App Ready'],
+  },
+  {
+    id: 'addon-02',
+    name: 'Luxury Finish Package',
+    icon: 'finish',
+    items: ['Powder Coating', 'Matte Finish', 'Wood Finish', 'Textured Finish', 'Premium Color Selection'],
+  },
+  {
+    id: 'addon-03',
+    name: 'Architectural Upgrade',
+    icon: 'architecture',
+    items: ['CNC Laser Cutting', 'Decorative Panels', 'Glass + Steel Combination', 'Stainless Steel Accents'],
+  },
+  {
+    id: 'addon-04',
+    name: 'Express Delivery Package',
+    icon: 'express',
+    items: ['Priority fabrication and installation for urgent commercial or residential projects'],
+  },
 ]

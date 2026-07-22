@@ -21,6 +21,7 @@ export default function Nav() {
     { to: '/',         label: 'Home' },
     { to: '/about',    label: 'About' },
     { to: '/products', label: 'Products' },
+    { to: '/packages', label: 'Packages' },
     { to: '/#projects',  label: 'Projects',  isHash: true },
     { to: '/#services',  label: 'Services',  isHash: true },
     { to: '/contact',  label: 'Contact' },

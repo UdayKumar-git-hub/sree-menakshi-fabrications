@@ -1,8 +1,13 @@
 // src/pages/Contact.jsx
+import { useSearchParams } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import ContactForm from '../components/ContactForm'
 
 export default function Contact() {
+  const [searchParams] = useSearchParams()
+  const packageName = searchParams.get('package') || ''
+  const productName = searchParams.get('product') || ''
+
   useReveal([])
 
   return (
@@ -72,7 +77,10 @@ export default function Contact() {
             </div>
 
             <div className="reveal">
-              <ContactForm />
+              <ContactForm
+                defaultProduct={productName}
+                defaultPackage={packageName}
+              />
             </div>
           </div>
         </div>

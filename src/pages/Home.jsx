@@ -1,10 +1,11 @@
 // src/pages/Home.jsx
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AnimatedCounter from '../components/AnimatedCounter'
 import ContactForm from '../components/ContactForm'
 import { useTestimonials } from '../hooks/useTestimonials'
 import { useReveal } from '../hooks/useReveal'
-import { COMPANY_STATS, SERVICES, PROJECTS, WHY_CHOOSE, HOME_PRODUCTS } from '../lib/data'
+import { COMPANY_STATS, SERVICES, PROJECT_VIDEOS, WHY_CHOOSE, HOME_PRODUCTS } from '../lib/data'
 
 // ── Lucide-style SVG icons for services ────────────────────
 const SERVICE_ICONS = {
@@ -29,33 +30,50 @@ export default function Home() {
   const { testimonials } = useTestimonials()
   useReveal([])
 
+  const [mouseCoords, setMouseCoords] = useState({ x: '50%', y: '50%' })
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = `${e.clientX - rect.left}px`
+    const y = `${e.clientY - rect.top}px`
+    setMouseCoords({ x, y })
+  }
+
   return (
     <div>
       {/* ════════════════════════════════════════════════════════
-          SECTION 1 — HERO
+          SECTION 1 — HERO (SUBTLE & PREMIUM)
       ════════════════════════════════════════════════════════ */}
-      <section className="hero" id="hero">
+      <section
+        className="hero hero--subtle"
+        id="hero"
+        onMouseMove={handleMouseMove}
+        style={{ '--mouse-x': mouseCoords.x, '--mouse-y': mouseCoords.y }}
+      >
+        <div className="hero__subtle-glow" />
+        <div className="hero__grid-pattern" />
+
+
+
         <div className="hero__inner">
           <div className="hero__content">
-            <div className="hero__eyebrow reveal">Since 2013</div>
+            <span className="hero__tagline reveal">SREE MEENAKSHI FABRICATORS</span>
+
             <h1 className="hero__title reveal reveal-d1">
-              PRECISION.<br />
-              <span className="accent">ENGINEERED</span><br />
-              TO LAST.
+              Precision Steel.<br />
+              <span className="accent">Engineered to Last.</span>
             </h1>
+
             <p className="hero__subtitle reveal reveal-d2">
-              Premium fabrication solutions for industrial, commercial and infrastructure projects since 2013.
+              Ultra-premium rolling shutters, heavy-duty industrial sheds, and custom structural steel solutions built for permanence.
             </p>
+
             <div className="hero__actions reveal reveal-d3">
               <Link to="/contact" className="btn btn--primary">Get Quote</Link>
-              <a href="#projects" className="btn btn--ghost">View Projects</a>
+              <Link to="/packages" className="btn btn--ghost">Explore Packages →</Link>
             </div>
           </div>
-          <div className="hero__visual reveal-img reveal-d2">
-            <img src="/hero.png" alt="Modern industrial steel building" className="hero__image" />
-            <div className="hero__glow" />
-          </div>
         </div>
+
         <div className="hero__scroll">
           <span className="hero__scroll-line" />
           <span className="hero__scroll-text">Scroll</span>
@@ -173,28 +191,39 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          SECTION 6 — FEATURED PROJECTS
+          SECTION 6 — PROJECT FOOTAGES
       ════════════════════════════════════════════════════════ */}
       <section className="section section--bg2" id="projects">
         <div className="section__inner">
           <div className="section__header">
-            <span className="eyebrow reveal">Portfolio</span>
-            <h2 className="heading-lg reveal reveal-d1">Featured Projects</h2>
+            <span className="eyebrow reveal">On-Site Media</span>
+            <h2 className="heading-lg reveal reveal-d1">Project Footages</h2>
             <p className="body-lg reveal reveal-d2">
-              A selection of completed industrial and commercial projects.
+              Real installation and manufacturing footages from our active site operations across Telangana and AP.
             </p>
           </div>
 
-          <div className="projects-grid">
-            {PROJECTS.map((proj, idx) => (
-              <div key={idx} className={`project-card reveal-img reveal-d${idx + 1}`}>
-                <img src={proj.image} alt={proj.title} className="project-card__img" loading="lazy" />
-                <div className="project-card__overlay">
-                  <div className="project-card__meta">
-                    <span>{proj.location}</span>
-                    <span>{proj.year}</span>
-                  </div>
-                  <h3 className="project-card__title">{proj.title}</h3>
+          <div className="video-grid">
+            {PROJECT_VIDEOS.map((vid, idx) => (
+              <div
+                key={vid.id}
+                className={`video-card reveal reveal-d${Math.min(idx + 1, 6)}`}
+              >
+                <div className="video-card__player-wrap">
+                  <video
+                    src={vid.src}
+                    className="video-card__player"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                  />
+                </div>
+                <div className="video-card__info">
+                  <span className="video-card__cat">{vid.category}</span>
+                  <h3 className="video-card__title">{vid.title}</h3>
                 </div>
               </div>
             ))}

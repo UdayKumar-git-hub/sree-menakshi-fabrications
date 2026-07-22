@@ -16,9 +16,38 @@ export function useEnquiry() {
     setError(null)
     setSuccess(false)
 
+    // 1. Submit to Google Sheets (if URL is set in env)
+    const googleSheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL
+    let googleSheetSuccess = false
+    if (googleSheetsUrl && !googleSheetsUrl.includes('your-google-script-url')) {
+      try {
+        await fetch(googleSheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email || '',
+            product: formData.product || '',
+            message: formData.message || '',
+            timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+          })
+        })
+        googleSheetSuccess = true
+      } catch (e) {
+        console.error('Google Sheets submission failed:', e)
+      }
+    }
+
+    // 2. Submit to Supabase (if configured)
     if (!isSupabaseConfigured) {
-      // Simulate success when Supabase not yet configured
-      await new Promise(r => setTimeout(r, 800))
+      if (!googleSheetSuccess) {
+        // Fallback simulated delay
+        await new Promise(r => setTimeout(r, 800))
+      }
       setSuccess(true)
       setLoading(false)
       return true

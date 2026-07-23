@@ -50,11 +50,11 @@ export const CATEGORIES = [
 ]
 
 export const TESTIMONIALS = [
-  { id: 1, author: 'Ramesh Reddy', company: 'Reddy Cold Storage, Medchal', rating: 5, content: 'Excellent quality motorized rolling shutters installed across all 12 bays of our cold storage. Smooth operation, on-time delivery, and professional team. Highly recommended.' },
-  { id: 2, author: 'Suresh Kumar', company: 'Kumar Textiles, Kukatpally', rating: 5, content: 'We got 4 automatic shutters installed for our textile unit. The quality is top-notch and the after-sales support is outstanding. Will definitely use SMF again for future projects.' },
-  { id: 3, author: 'Anjali Sharma', company: 'Sharma Industries, Patancheru', rating: 5, content: 'PEB shed construction was completed on time and within budget. The structural design team was very professional. The finished shed is exactly what we needed for our production floor.' },
-  { id: 4, author: 'Mohammad Farooq', company: 'Farooq Warehousing, Uppal', rating: 4, content: 'Good quality sliding gates for our warehouse complex. The MS fabrication is solid and the automatic operation is smooth. Minor delay in delivery but overall satisfied.' },
-  { id: 5, author: 'Priya Nair', company: 'Nair Auto Spares, LB Nagar', rating: 5, content: 'Shop rolling shutters are perfect for our auto spare parts outlet. Very durable and the gear mechanism works flawlessly even after 2 years. Great value for money.' },
+  { id: 1, author: 'Ramesh Reddy', company: 'Reddy Cold Storage', project: '12-Bay Motorized Rolling Shutters', location: 'Medchal, Hyderabad', rating: 5, content: 'Excellent quality motorized rolling shutters installed across all 12 bays of our cold storage. Smooth operation, on-time delivery, and professional team. Highly recommended.' },
+  { id: 2, author: 'Suresh Kumar', company: 'Kumar Textiles', project: '4 Automatic Security Shutters', location: 'Kukatpally, Hyderabad', rating: 5, content: 'We got 4 automatic shutters installed for our textile unit. The quality is top-notch and the after-sales support is outstanding. Will definitely use SMF again for future projects.' },
+  { id: 3, author: 'Anjali Sharma', company: 'Sharma Industries', project: 'Industrial PEB Production Shed', location: 'Patancheru, Telangana', rating: 5, content: 'PEB shed construction was completed on time and within budget. The structural design team was very professional. The finished shed is exactly what we needed for our production floor.' },
+  { id: 4, author: 'Mohammad Farooq', company: 'Farooq Warehousing', project: 'Heavy-Duty Motorized Sliding Gates', location: 'Uppal, Hyderabad', rating: 4, content: 'Good quality sliding gates for our warehouse complex. The MS fabrication is solid and the automatic operation is smooth. Minor delay in delivery but overall satisfied.' },
+  { id: 5, author: 'Priya Nair', company: 'Nair Auto Spares', project: 'Gear-Operated Shop Rolling Shutters', location: 'LB Nagar, Hyderabad', rating: 5, content: 'Shop rolling shutters are perfect for our auto spare parts outlet. Very durable and the gear mechanism works flawlessly even after 2 years. Great value for money.' },
 ]
 
 export const COMPANY_STATS = [

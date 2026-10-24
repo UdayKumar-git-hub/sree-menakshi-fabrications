@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import SparkCursor from './components/SparkCursor'
+import ScrollExperience from './components/ScrollExperience'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
@@ -23,6 +24,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <ScrollExperience />
       <SparkCursor />
       <Nav />
       <main>

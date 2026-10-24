@@ -1,7 +1,6 @@
 // src/pages/Home.jsx
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ContactForm from '../components/ContactForm'
 import ScrollingGallery from '../components/ScrollingGallery'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
 import { useTestimonials } from '../hooks/useTestimonials'
@@ -69,12 +68,12 @@ export default function Home() {
             <span className="hero__tagline reveal">SREE MEENAKSHI FABRICATORS</span>
 
             <h1 className="hero__title reveal reveal-d1">
-              Precision Steel.<br />
-              <span className="accent">Engineered to Last.</span>
+              Heavy-Duty Shutters & Steel Gates.<br />
+              <span className="accent">Built Strong. Built for Life.</span>
             </h1>
 
             <p className="hero__subtitle reveal reveal-d2">
-              Ultra-premium rolling shutters, heavy-duty industrial sheds, and custom structural steel solutions built for permanence.
+              Custom motorized rolling shutters, industrial sheds, and heavy steel fabrication built to protect your business, warehouse, and property.
             </p>
 
             <div className="hero__actions reveal reveal-d3">

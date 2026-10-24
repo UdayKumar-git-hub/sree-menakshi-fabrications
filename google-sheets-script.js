@@ -1,15 +1,7 @@
-// paste this code inside Google Apps Script (Extensions > Apps Script in Google Sheets)
-// Then click Deploy > New Deployment > Select Type: Web App
-// Set "Execute as": Me, and "Who has access": Anyone.
-// Copy the Web App URL and paste it into .env.local as VITE_GOOGLE_SHEETS_URL.
+// paste this updated code inside Google Apps Script (Extensions > Apps Script in Google Sheets)
+// Then click Deploy > Manage deployments > Click edit icon (pencil) > Under Version select "New version" > Click Deploy.
 
 function doPost(e) {
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
-  
   try {
     var data = JSON.parse(e.postData.contents);
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -42,23 +34,15 @@ function doPost(e) {
     ]);
     
     return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-function doOptions(e) {
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
-  return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeaders(headers);
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({ status: "ready", message: "SMF Lead Webhook is active" }))
+    .setMimeType(ContentService.MimeType.JSON);
 }
